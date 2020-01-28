@@ -2,42 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mapspot/ui/mainPage.dart';
 
-
-
-class LoginPage extends StatefulWidget{
+class LoginPage extends StatefulWidget {
   @override
   _LoginPage createState() => _LoginPage();
 }
-class _LoginPage extends State<LoginPage>{
 
-bool _isSelected = false;
-
-  void _radio() {
-    setState(() {
-      _isSelected = !_isSelected;
-    });
-  }
-
-  Widget radioButton(bool isSelected) => Container(
-        width: 16.0,
-        height: 16.0,
-        padding: EdgeInsets.all(2.0),
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(width: 2.0, color: Colors.black)),
-        child: isSelected
-            ? Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: Colors.black),
-              )
-            : Container(),
-      );
+class _LoginPage extends State<LoginPage> {
+  bool _isSelected = false;
 
   @override
   Widget build(BuildContext context) {
-   ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
     return Scaffold(
@@ -54,7 +29,7 @@ bool _isSelected = false;
           },
         ));
   }
-  
+
   Widget uygulamaGovdesi() {
     return Container(
       child: Stack(
@@ -66,7 +41,7 @@ bool _isSelected = false;
               Expanded(
                 child: Container(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 20.0),
+                    padding: EdgeInsets.only(top: 0),
                     child: Image.asset("assets/background.png"),
                   ),
                 ),
@@ -81,6 +56,7 @@ bool _isSelected = false;
                   Row(
                     //mainAxisSize: MainAxisSize.max,
                     //mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       Image.asset(
                         "assets/logo.png",
@@ -93,23 +69,37 @@ bool _isSelected = false;
                     height: ScreenUtil.getInstance().setHeight(150),
                   ),
                   formCard(context),
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
+                  SizedBox(height: ScreenUtil.getInstance().setHeight(20)),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      GestureDetector(
-                        onTap: _radio,
-                        child: radioButton(_isSelected),
-                      ),
                       Text("Beni Hatırla",
                           style: TextStyle(
-                              fontSize: 12, fontFamily: "Poppins-Medium")),
-                      Text(
-                        "Şifremi Unuttum",
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontFamily: "Poppins-Medium",
-                            fontSize: ScreenUtil.getInstance().setSp(24)),
+                              fontSize: 16, fontFamily: "Poppins-Medium")),
+                      GestureDetector(
+                        child: Checkbox(
+                          value: _isSelected,
+                          onChanged: (deger) {
+                            setState(() {
+                              _isSelected = deger;
+                            });
+                          },
+                          activeColor: Colors.grey,
+                          checkColor: Colors.black,
+                        ),
+                      ),
+                      SizedBox(),
+                      InkWell(
+                        child: Text(
+                          "Şifremi Unuttum",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontFamily: "Poppins-Medium",
+                              fontSize: ScreenUtil.getInstance().setSp(24)),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamed(context, "/changePassword");
+                        },
                       ),
                     ],
                   ),
@@ -119,8 +109,11 @@ bool _isSelected = false;
                       height: ScreenUtil.getInstance().setHeight(100),
                       margin: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(6.0),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.red.shade300, Colors.red.shade700]),
+                        borderRadius: BorderRadius.circular(50.0),
                       ),
                       child: Material(
                         color: Colors.transparent,
@@ -132,25 +125,29 @@ bool _isSelected = false;
                             child: Text("GİRİŞ",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontFamily: "Poppins-Bold",
-                                    fontSize: 18,
+                                    fontFamily: "CustomIcon",
+                                    fontSize: 22,
                                     letterSpacing: 1.0)),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: ScreenUtil.getInstance().setHeight(40)),
-                   Text(
-                        "Henüz hesabin yok mu? Kayit Ol",
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontFamily: "Poppins-Medium",
-                            fontSize: ScreenUtil.getInstance().setSp(28)),
-                      ),
-                  
-
-                 
+                  SizedBox(
+                    height: ScreenUtil.getInstance().setHeight(40),
+                  ),
+                  InkWell(
+                    child: Text(
+                      "Henüz hesabin yok mu? Kayit Ol",
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontFamily: "Poppins-Medium",
+                          fontSize: ScreenUtil.getInstance().setSp(28)),
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, "/register");
+                    },
+                  ),
                 ],
               ),
             ),
@@ -163,68 +160,75 @@ bool _isSelected = false;
   Widget uygulamaGovdesiLandscape() {
     return Container();
   }
-
-
 }
 
-
-
 Widget formCard(BuildContext context) {
-   return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Container(
-          child: Text("",
-              style: TextStyle(
-                  fontFamily: "Poppins-Medium",
-                  fontSize: ScreenUtil.getInstance().setSp(26))),
+  return Column(
+    mainAxisSize: MainAxisSize.max,
+    children: <Widget>[
+      Container(
+        child: Text("",
+            style: TextStyle(
+                fontFamily: "Poppins-Medium",
+                fontSize: ScreenUtil.getInstance().setSp(26))),
+      ),
+      Container(
+        // width: double.infinity / 2,
+        //height: MediaQuery.of(context).size.height / 12,
+        color: Colors.transparent,
+        child: TextField(
+          autofocus: true,
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+              prefixIcon: Icon(Icons.email),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderSide: BorderSide(color: Colors.grey),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderSide: BorderSide(color: Colors.grey),
+              ),
+              labelText: "Email",
+              hintText: "Email",
+              hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0),
+              filled: true,
+              fillColor: Colors.white70,
+              ),
+              cursorColor: Colors.green,
+              
         ),
-        Container(
-          width: double.infinity / 2,
-          height: MediaQuery.of(context).size.height / 12,
-          color: Colors.white70,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                hintText: "Email",
-                hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
-          ),
+      ),
+      Container(
+        child: Text("",
+            style: TextStyle(
+                fontFamily: "Poppins-Medium",
+                fontSize: ScreenUtil.getInstance().setSp(26))),
+      ),
+       Container(
+        color: Colors.transparent,
+        child: TextField(
+          autofocus: true,
+          obscureText: true,
+          decoration: InputDecoration(
+            hoverColor: Colors.green,
+              prefixIcon: Icon(Icons.lock),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderSide: BorderSide(color: Colors.grey),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderSide: BorderSide(color: Colors.grey),
+              ),
+              labelText: "Şifre",
+              hintText: "Şifre",
+              hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0),
+              filled: true,
+              fillColor: Colors.white70,
+              ),
         ),
-        Container(
-          child: Text("",
-              style: TextStyle(
-                  fontFamily: "Poppins-Medium",
-                  fontSize: ScreenUtil.getInstance().setSp(26))),
-        ),
-        Container(
-          width: double.infinity / 2,
-          height: MediaQuery.of(context).size.height / 12,
-          color: Colors.white70,
-          child: TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                hintText: "Şifre",
-                hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
-          ),
-        ),
-      ],
-    );
+      ),
+    ],
+  );
 }

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-class ChangePassword extends StatefulWidget{
+class ChangePassword  extends StatefulWidget{
   @override
-  _ChangePassword createState() => _ChangePassword();
+  _ChangePassword  createState() => _ChangePassword ();
 
 }
-class _ChangePassword extends State<ChangePassword>{
+class _ChangePassword  extends State<ChangePassword >{
  
   @override
   Widget build(BuildContext context) {
@@ -71,23 +71,23 @@ class _ChangePassword extends State<ChangePassword>{
                     child: Container(
                       width: ScreenUtil.getInstance().setWidth(600),
                       height: ScreenUtil.getInstance().setHeight(100),
-                      margin: EdgeInsets.only(top: 40),
+                      margin: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.circular(6.0),
+                        borderRadius: BorderRadius.circular(50.0),
                       ),
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          /*onTap: () {
-                            Navigator.pushNamed(context, "/anasayfa");
-                          },*/
+                          onTap: () {
+                            Navigator.pushNamed(context, "/passwordSuccess");
+                          },
                           child: Center(
                             child: Text("KAYDET",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontFamily: "Poppins-Bold",
-                                    fontSize: 18,
+                                    fontFamily: "CustomIcon",
+                                    fontSize: 22,
                                     letterSpacing: 1.0)),
                           ),
                         ),
@@ -109,6 +109,7 @@ class _ChangePassword extends State<ChangePassword>{
 
 
 }
+
 
 
 
@@ -139,6 +140,7 @@ Widget formCard(BuildContext context) {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+                labelText: "Yeni Şifre",
                 hintText: "Yeni Şifre",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),
@@ -160,6 +162,7 @@ Widget formCard(BuildContext context) {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+                labelText: "Yeni Şifre Tekrar",
                 hintText: "Yeni Şifre Tekrar",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),
@@ -167,3 +170,4 @@ Widget formCard(BuildContext context) {
       ],
     );
 }
+

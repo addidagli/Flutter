@@ -74,20 +74,20 @@ class _Register extends State<Register>{
                       margin: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.circular(6.0),
+                        borderRadius: BorderRadius.circular(50.0),
                       ),
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          /*onTap: () {
-                            Navigator.pushNamed(context, "/anasayfa");
-                          },*/
+                          onTap: () {
+                            Navigator.pushNamed(context, "/registerSuccess");
+                          },
                           child: Center(
                             child: Text("KAYIT OL",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontFamily: "Poppins-Bold",
-                                    fontSize: 18,
+                                    fontFamily: "CustomIcon",
+                                    fontSize: 22,
                                     letterSpacing: 1.0)),
                           ),
                         ),
@@ -127,7 +127,7 @@ Widget formCard(BuildContext context) {
           width: double.infinity / 2,
           height: MediaQuery.of(context).size.height / 12,
           color: Colors.white70,
-          child: TextField(
+          child: TextFormField(
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.account_circle),
                 enabledBorder: OutlineInputBorder(
@@ -139,15 +139,16 @@ Widget formCard(BuildContext context) {
                   borderSide: BorderSide(color: Colors.grey),
                 ),
                 hintText: "Adı Soyadı",
+                labelText: "Adı Soyadı",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(top: 5),
           width: double.infinity / 2,
           height: MediaQuery.of(context).size.height / 12,
           color: Colors.white70,
-          child: TextField(
+          child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.email),
@@ -159,17 +160,19 @@ Widget formCard(BuildContext context) {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+                labelText: "Email",
                 hintText: "Email",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(top: 5),
           width: double.infinity / 2,
           height: MediaQuery.of(context).size.height / 12,
           color: Colors.white70,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
+          child: TextFormField(
+            keyboardType: TextInputType.number,
+            textInputAction: TextInputAction.done,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.phone),
                 enabledBorder: OutlineInputBorder(
@@ -180,16 +183,17 @@ Widget formCard(BuildContext context) {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+                labelText: "Telefon",
                 hintText: "Telefon",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(top: 5),
           width: double.infinity / 2,
           height: MediaQuery.of(context).size.height / 12,
           color: Colors.white70,
-          child: TextField(
+          child: TextFormField(
             obscureText: true,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
@@ -201,16 +205,17 @@ Widget formCard(BuildContext context) {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+                labelText: "Şifre",
                 hintText: "Şifre",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 10),
+          margin: EdgeInsets.only(top: 5),
           width: double.infinity / 2,
           height: MediaQuery.of(context).size.height / 12,
           color: Colors.white70,
-          child: TextField(
+          child: TextFormField(
             obscureText: true,
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock),
@@ -222,6 +227,7 @@ Widget formCard(BuildContext context) {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Colors.grey),
                 ),
+                labelText: "Şifre Tekrar",
                 hintText: "Şifre Tekrar",
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
           ),

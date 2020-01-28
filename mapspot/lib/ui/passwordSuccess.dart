@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-class ConfirmCode extends StatefulWidget{
+class PasswordSuccess extends StatefulWidget{
   @override
-  _ConfirmCode createState() => _ConfirmCode();
+  _PasswordSuccess createState() => _PasswordSuccess();
 
 }
-class _ConfirmCode extends State<ConfirmCode>{
- 
+class _PasswordSuccess extends State<PasswordSuccess>{
   @override
   Widget build(BuildContext context) {
-   ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+    ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 750, height: 1334, allowFontScaling: true);
     return Scaffold(
@@ -28,7 +26,7 @@ class _ConfirmCode extends State<ConfirmCode>{
           },
         ));
   }
-  
+
   Widget uygulamaGovdesi() {
     return Container(
       child: Stack(
@@ -68,24 +66,37 @@ class _ConfirmCode extends State<ConfirmCode>{
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    ),
                     child: Card(
                       color: Colors.white,
                       margin: EdgeInsets.all(10),
                       elevation: 10,
                       child: (ListTile(
-                        leading: CircleAvatar(child: Icon(Icons.error),radius: 12,),
-                        subtitle: Text("Kaydınızı tamamlamak için lütfen mailinize gönderilen onay kodunu giriniz",style: TextStyle(fontSize: 16),)
-                      )),
+                          leading: CircleAvatar(
+                            child: Icon(Icons.check_circle),
+                            radius: 12,
+                            backgroundColor: Colors.green,
+                            foregroundColor: Colors.white,
+                          ),
+                          subtitle: Text(
+                            "Yeni şifre oluşturuldu!",
+                            style: TextStyle(
+                              
+                              fontSize: 16,
+                              color: Colors.green,
+                              fontFamily: "Poppins-medium",
+                              
+                             
+                            ),
+                          ))),
                     ),
                   ),
-                  formCard(context),
                   InkWell(
                     child: Container(
                       width: ScreenUtil.getInstance().setWidth(600),
                       height: ScreenUtil.getInstance().setHeight(100),
-                      margin: EdgeInsets. only(top: 40),
+                      margin: EdgeInsets.only(top: 40),
                       decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0),
@@ -93,11 +104,11 @@ class _ConfirmCode extends State<ConfirmCode>{
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          /*onTap: () {
-                            Navigator.pushNamed(context, "/anasayfa");
-                          },*/
+                          onTap: () {
+                            Navigator.pushNamed(context, "/loginPage");
+                          },
                           child: Center(
-                            child: Text("KAYDET",
+                            child: Text("GİRİŞ YAP",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: "CustomIcon",
@@ -107,7 +118,7 @@ class _ConfirmCode extends State<ConfirmCode>{
                         ),
                       ),
                     ),
-                  ),       
+                  ),
                 ],
               ),
             ),
@@ -120,44 +131,4 @@ class _ConfirmCode extends State<ConfirmCode>{
   Widget uygulamaGovdesiLandscape() {
     return Container();
   }
-
-
-}
-
-
-
-Widget formCard(BuildContext context) {
-   return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Container(
-          child: Text("",
-              style: TextStyle(
-                  fontFamily: "Poppins-Medium",
-                  fontSize: ScreenUtil.getInstance().setSp(26))),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          width: double.infinity / 2,
-          height: MediaQuery.of(context).size.height / 12,
-          color: Colors.white70,
-          child: TextField(
-            textAlign: TextAlign.center,
-            obscureText: true,
-            decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                
-                hintText: "Onay Kodu",
-                hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0)),
-          ),
-        ),
-      ],
-    );
 }
