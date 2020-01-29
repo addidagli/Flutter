@@ -182,11 +182,11 @@ Widget formCard(BuildContext context) {
           decoration: InputDecoration(
               prefixIcon: Icon(Icons.email),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderRadius: BorderRadius.all(Radius.circular(6.0)),
                 borderSide: BorderSide(color: Colors.grey),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderRadius: BorderRadius.all(Radius.circular(6.0)),
                 borderSide: BorderSide(color: Colors.grey),
               ),
               labelText: "Email",
@@ -214,11 +214,11 @@ Widget formCard(BuildContext context) {
             hoverColor: Colors.green,
               prefixIcon: Icon(Icons.lock),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderRadius: BorderRadius.all(Radius.circular(6.0)),
                 borderSide: BorderSide(color: Colors.grey),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                borderRadius: BorderRadius.all(Radius.circular(6.0)),
                 borderSide: BorderSide(color: Colors.grey),
               ),
               labelText: "Şifre",

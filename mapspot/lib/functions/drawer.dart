@@ -23,10 +23,10 @@ class DrawerPage extends StatelessWidget {
                 UserAccountsDrawerHeader(
                   accountName: Text("Alaattin Dağlı"),
                   accountEmail: Text("alaattindagli@piton.com.tr"),
-                  currentAccountPicture: Image.asset(
-                    "assets/addi.jpg",
-                    fit: BoxFit.cover,
-                  ),
+                  currentAccountPicture:  Image.asset(
+                    "assets/addi.jpg",fit: BoxFit.cover,), 
+                    
+                  
                   otherAccountsPictures: <Widget>[
                     CircleAvatar(
                       backgroundColor: Colors.tealAccent,
@@ -46,7 +46,7 @@ class DrawerPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    //Navigator.pushNamed(context, "/profile");
+                    Navigator.pushNamed(context, "/profile");
                   },
                   child: ListTile(
                     leading: Icon(Icons.account_box),
@@ -56,7 +56,7 @@ class DrawerPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    //Navigator.pushNamed(context, "/tasks");
+                    Navigator.pushNamed(context, "/taskDetails");
                   },
                   child: ListTile(
                     leading: Icon(Icons.check_box),
@@ -76,7 +76,7 @@ class DrawerPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    //Navigator.pushNamed(context, "/records");
+                    Navigator.pushNamed(context, "/records");
                   },
                   child: ListTile(
                     leading: Icon(Icons.save),
